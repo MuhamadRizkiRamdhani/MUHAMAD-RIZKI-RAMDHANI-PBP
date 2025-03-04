@@ -41,6 +41,9 @@ public class MainController implements Initializable {
         if(inputUsername.getText().equals("admin") && 
                 inputPassword.getText().equals("123")){
             labelError.setText("Login Sukses!");
+            
+            main main = new main();
+            main.changeScene("Dashboard.fxml");
         }
         else if(inputUsername.getText().isEmpty()&&
                 inputPassword.getText().isEmpty()){

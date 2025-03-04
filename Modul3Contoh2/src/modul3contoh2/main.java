@@ -4,6 +4,7 @@
  */
 package modul3contoh2;
 
+import java.awt.Image;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,14 +17,32 @@ import javafx.stage.Stage;
  */
 public class main extends Application {
     
+    private static Stage primaryStage;
+    
     @Override
     public void start(Stage stage) throws Exception {
+        
+        primaryStage = stage;
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         
         Scene scene = new Scene(root);
         
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Masoem University");
+        primaryStage.show();
+    }
+    
+    public void changeScene(String fxmlFile) throws Exception{
+        Parent newRoot = FXMLLoader.load(getClass().getResource(fxmlFile));
+        
+        double width = newRoot.prefWidth(-1);
+        double height = newRoot.prefHeight(-1);
+        
+        primaryStage.getScene().setRoot(newRoot);
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
     }
 
     /**
